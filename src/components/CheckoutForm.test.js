@@ -1,12 +1,13 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import CheckoutForm from "./CheckoutForm";
 
 // Write up the two tests here and make sure they are testing what the title shows
 
 test("form header renders", () => {
     render(<CheckoutForm />);
-    const header = getByText(/Contact Form/i);
+    const header = screen.getByText(/Checkout Form/i);
     expect(header).toBeInTheDocument();
 });
 
@@ -34,11 +35,13 @@ test("form shows success message on submit with form details", () => {
     const button = screen.getByRole("button");
     userEvent.click(button);
 
+
     expect(fnameInput).toBeInTheDocument();
     expect(lnameInput).toBeInTheDocument();
     expect(addressInput).toBeInTheDocument();
     expect(cityInput).toBeInTheDocument();
     expect(stateInput).toBeInTheDocument();
     expect(zipInput).toBeInTheDocument();
+
 
 });
